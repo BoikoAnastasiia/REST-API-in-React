@@ -1,0 +1,38 @@
+{
+  "todos": [
+    {
+      "todos": [
+        {
+          "id": "id-1",
+          "text": "Learn basic React",
+          "completed": false
+        },
+        {
+          "id": "id-2",
+          "text": "Deal with React Router",
+          "completed": false
+        },
+        {
+          "id": "id-3",
+          "text": "Het used to Redux",
+          "completed": true
+        },
+        {
+          "id": "id-4",
+          "text": "Try React Hooks",
+          "completed": false
+        },
+        {
+          "text": "Listen to Repeta",
+          "completed": true,
+          "id": "fQiDzTX"
+        },
+        {
+          "text": "Don't forget React",
+          "completed": false,
+          "id": "YAk70hk"
+        }
+      ]
+    }
+  ]
+}
