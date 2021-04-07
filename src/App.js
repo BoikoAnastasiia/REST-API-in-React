@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import TodosView from './views/TodosView';
+import TodosView from './views/TodosView.jsx';
 import ArticlesView from './views/ArticlesView';
 
 const App = () => (

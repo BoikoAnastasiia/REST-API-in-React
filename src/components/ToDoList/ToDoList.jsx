@@ -1,6 +1,6 @@
 // import { Component } from 'react';
 import classNames from 'classnames';
-import './ToDoList.scss';
+import './TodoList.scss';
 import Todo from '../Todo';
 
 const ToDoList = ({ todos, onDeleteToDo, onToggleCompleted }) => (

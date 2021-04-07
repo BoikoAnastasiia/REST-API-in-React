@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchForm from '../components/SearchForm';
+import SearchForm from '../components/SearchForm/SearchForm';
 import newsApi from '../services/news-api';
 
 class ArticlesView extends Component {

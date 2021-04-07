@@ -1,4 +1,4 @@
-import '../ToDoList/ToDoList.scss';
+import '../TodoList/TodoList.scss';
 import IconButton from '../IconButton';
 import { ReactComponent as DeleteIcon } from '../../icons/delete.svg';
 

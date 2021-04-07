@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Container from '../components/Container';
 import TodoList from '../components/TodoList';
-import TodoEditor from '../components/TodoEditor';
+import TodoEditor from '../components/ToDoEditor';
 import Filter from '../components/TodoFilter';
 import Stats from '../components/Stats';
 import Modal from '../components/Modal';
