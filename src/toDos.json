@@ -1,0 +1,10 @@
+[
+  { "id": "id-1", "text": "Learn basic React", "completed": false },
+  {
+    "id": "id-2",
+    "text": "Figure out what is React Router",
+    "completed": true
+  },
+  { "id": "id-3", "text": "Go through Redux", "completed": true },
+  { "id": "id-4", "text": "Listen to Repeta", "completed": false }
+]
