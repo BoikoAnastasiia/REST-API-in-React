@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.headers.common['Authorization'] =
-  'Bearer 4330ebfabc654a6992c2aa792f3173a3';
+  'Bearer fb416686c0cf4be5b520956836ebc075';
 
 const fetchArticles = ({ searchQuery = '', currentPage = 1, pageSize = 5 }) => {
   return axios

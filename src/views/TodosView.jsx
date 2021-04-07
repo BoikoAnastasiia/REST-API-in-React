@@ -8,7 +8,6 @@ import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
 import todosApi from '../services/todos-api';
-import axios from 'axios';
 
 const barStyles = {
   display: 'flex',
@@ -24,13 +23,9 @@ class TodosView extends Component {
   };
 
   componentDidMount() {
-    // todosApi
-    //   .fetchTodos()
-    //   .then(todos => this.setState({ todos }))
-    //   .catch(error => console.log(error));
-    axios
-      .get('http://localhost:3000/todos')
-      .then(({ data }) => this.setState({ todos: data }))
+    todosApi
+      .fetchTodos()
+      .then(todos => this.setState({ todos }))
       .catch(error => console.log(error));
   }
 
@@ -49,26 +44,17 @@ class TodosView extends Component {
       completed: false,
     };
 
-    axios.post('http://localhost:3000/todos', todoData).then(({ data }) => {
-      this.setState(({ todos }) => ({ todos: [...todos, data] }));
+    todosApi.addTodo(todoData).then(todo => {
+      this.setState(({ todos }) => ({ todos: [...todos, todo] }));
+      this.toggleModal();
     });
-    this.toggleModal();
-    // todosApi.addTodo(todoData).then(todo => {
-    //   this.setState(({ todos }) => ({ todos: [...todos, todo] }));
-    //   this.toggleModal();
-    // });
   };
 
   deleteTodo = todoId => {
-    axios.delete(`http://localhost:3000/todos/${todoId}`).then(() => {
+    todosApi.deleteTodo(todoId).then(() => {
       this.setState(({ todos }) => ({
         todos: todos.filter(({ id }) => id !== todoId),
       }));
-
-      // todosApi.deleteTodo(todoId).then(() => {
-      //   this.setState(({ todos }) => ({
-      //     todos: todos.filter(({ id }) => id !== todoId),
-      // }));
     });
   };
 
@@ -77,21 +63,13 @@ class TodosView extends Component {
     const { completed } = todo;
     const update = { completed: !completed };
 
-    axios
-      .patch(`http://localhost:3000/todos/${todoId}`, update)
-      .then(({ data }) => {
-        this.setState(({ todos }) => ({
-          todos: todos.map(todo => (todo.id === data.id ? data : todo)),
-        }));
-      });
-
-    // todosApi.updateTodo(todoId, update).then(updatedTodo => {
-    //   this.setState(({ todos }) => ({
-    //     todos: todos.map(todo =>
-    //       todo.id === updatedTodo.id ? updatedTodo : todo,
-    //     ),
-    //   }));
-    // });
+    todosApi.updateTodo(todoId, update).then(updatedTodo => {
+      this.setState(({ todos }) => ({
+        todos: todos.map(todo =>
+          todo.id === updatedTodo.id ? updatedTodo : todo,
+        ),
+      }));
+    });
   };
 
   changeFilter = e => {
