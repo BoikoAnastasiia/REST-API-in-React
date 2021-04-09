@@ -1,6 +1,10 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import SearchForm from '../components/SearchForm/SearchForm';
 import newsApi from '../services/news-api';
+
+axios.defaults.headers.common['Authorization'] =
+  'Bearer fb416686c0cf4be5b520956836ebc075';
 
 class ArticlesView extends Component {
   state = {
@@ -46,14 +50,13 @@ class ArticlesView extends Component {
 
   render() {
     const { articles, isLoading, error } = this.state;
-    const shouldRenderLoadMoreButton = articles.length > 0 && !isLoading;
-
+    const shouldRenderLoadButton = articles.length > 0 && !isLoading;
     return (
-      <div>
-        {error && <h1>Ой ошибка, всё пропало!!!</h1>}
-
+      <>
+        <h1>Articles </h1>
         <SearchForm onSubmit={this.onChangeQuery} />
-
+        {error && <p> Something went wrong</p>}
+        {isLoading && <p> ...Loading </p>}
         <ul>
           {articles.map(({ title, url }) => (
             <li key={title}>
@@ -61,15 +64,12 @@ class ArticlesView extends Component {
             </li>
           ))}
         </ul>
-
-        {isLoading && <h1>Загружаем...</h1>}
-
-        {shouldRenderLoadMoreButton && (
+        {shouldRenderLoadButton && (
           <button type="button" onClick={this.fetchArticles}>
-            Загрузить ещё
+            Load more
           </button>
         )}
-      </div>
+      </>
     );
   }
 }
